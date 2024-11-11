@@ -8,7 +8,10 @@ sudo apt install nginx -y
 # Remove the default Nginx HTML files and copy your website files
 echo "Deploying website files..."
 sudo rm -rf /var/www/html/*
-sudo cp -r ~/e-commerce/* /var/www/html/
+sudo mkdir -p /var/www/html
+
+# Copy all files and directories in the project root to /var/www/html
+sudo cp -r ~/project_directory/* /var/www/html/
 
 # Set proper permissions
 echo "Setting permissions..."
@@ -21,8 +24,8 @@ sudo tee /etc/nginx/sites-available/default > /dev/null <<EOL
 server {
     listen 80;
     server_name _;
-    root /var/www/html;
 
+    root /var/www/html;
     index index.html;
 
     location / {
@@ -39,4 +42,3 @@ sudo systemctl restart nginx
 sudo systemctl enable nginx
 
 echo "Deployment complete! Your website should now be accessible on this EC2 instance's public IP."
-
