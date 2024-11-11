@@ -10,8 +10,8 @@ echo "Deploying website files..."
 sudo rm -rf /var/www/html/*
 sudo mkdir -p /var/www/html
 
-# Copy all files and directories from pbl-sem-05 to /var/www/html
-sudo cp -r ~/pbl-sem-05/* /var/www/html/
+# Copy all files and directories from the current directory to /var/www/html
+sudo cp -r ./* /var/www/html/
 
 # Set proper permissions
 echo "Setting permissions..."
